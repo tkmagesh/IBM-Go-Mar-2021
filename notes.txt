@@ -1,0 +1,82 @@
+Primary Skillset
+Experience in Golang
+What do you intend to use Golang for?
+
+No Powerpoint
+
+9:30
+11:15 - Tea break for 20 mins
+1:00 - Lunch break for 1 Hr
+2:00 - Resume after lunch
+3:30 - Tea break for 20 mins
+5:30 - Wind up
+
+Why Golang?
+    Performance
+    Easy to learn
+    Better Memory Management
+    Suited for Cloud
+    Concurrency
+    Amalgamation of C, C++ & Python
+    Developer Friendly
+    Better Error Handling
+
+Simplicity
+    25 keywords
+    Concurrency
+        Multithreading
+            4MB of RAM
+            ThreadPool
+
+        Single-threaded
+        Builtin Scheduler
+        go routines
+            mini threads
+            2 KB of RAM (initial)
+            thousands of go routines in ONE thread
+            Builtin in concurrency constructs (as language constructs)
+                go, channel ( data type ), range, select
+                API for synchronization (Mutex, WaitGroup)
+            No Exceptions & try catch (because they are not concurrency friendly)
+
+func main(){
+    go fn1()
+    go fn2()
+}
+
+func fn1(){
+
+}
+
+func fn2(){
+
+}
+
+
+
+1. Visitor
+        Visitor Ledger
+        Gadget Ledger
+        Escorted
+
+2. Courier Guy
+        Courier Ledger
+
+3. Associates
+        Temp Bedge Ledger
+
+Strategy - 1
+    Single Threaded - Blocking
+        DisAdv - Lot of time
+        Adv - Simplicity
+
+Strategy - 2
+    Multi Threaded - Blocking
+        Adv - Reduction in processing time
+        DisAdv - Costly
+
+Strategy - 3
+    Single Threaded - Non Blocking (Event Loop - Scheduler)
+        Adv - Effective Use of time & Less cost
+        DisAdv - Not suitable for CPU intensive Operations
+                Follow timeslicing for CPU intensive operations
