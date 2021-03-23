@@ -10,7 +10,8 @@
             document.getElementById('divMessages').innerHTML += msg + '<br/>';
         }
 
-        function doWork(){
+        function doWork(workComplete){
+
             var currentIteration = 0,
                 totalIterations = 1000;
 
@@ -25,6 +26,7 @@
                     setTimeout(oneIteration);
                 } else {
                     console.log('Job Done!!');
+                    workComplete();
                 }
             }
 
@@ -37,7 +39,10 @@
         }
 
         function triggerWork(){
-            doWork();
+            doWork(onWorkCompletion);
+        }
+
+        function onWorkCompletion(){
             displayMessage('Work Completed');
         }
 
