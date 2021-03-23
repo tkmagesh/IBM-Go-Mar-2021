@@ -80,3 +80,31 @@ Strategy - 3
         Adv - Effective Use of time & Less cost
         DisAdv - Not suitable for CPU intensive Operations
                 Follow timeslicing for CPU intensive operations
+
+
+DataTypes in go
+    uint
+    int
+
+    uint8 (8bit)
+    uint16
+    uint32
+    uint64
+
+    int8
+    int16
+    int32
+    int64
+
+    float32
+    float64
+
+    complex64
+    complex128
+
+    byte (alias uint8)
+    rune (alias for int32) (represents a Unicode code point)
+
+    string
+
+Conditional Statements
