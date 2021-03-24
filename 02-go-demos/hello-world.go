@@ -2,7 +2,10 @@
 package main
 
 //import dependency package
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 //package level variables
 
@@ -119,6 +122,63 @@ func main() {
 		}
 	*/
 
+	//switch case
+	now := time.Now().Unix()
+	mins := now % 2
+	switch mins {
+	case 0:
+		fmt.Println("Even")
+	/* case 1:
+	fmt.Println("Odd") */
+	case 3 - 2:
+		fmt.Println("Odd")
+	}
+
+	score := 5
+	switch score {
+	case 0, 1, 2, 3:
+		fmt.Println("Terrible")
+	case 4, 5:
+		fmt.Println("Mediocre")
+	case 6, 7:
+		fmt.Println("Not bad")
+	}
+
+	n := 4
+	switch n {
+	case 0:
+		fmt.Println("Zero")
+		fallthrough
+	case 1:
+		fmt.Println("is <= 1")
+		fallthrough
+	case 2:
+		fmt.Println("is <= 2")
+		fallthrough
+	case 3:
+		fmt.Println("is <= 3")
+		fallthrough
+	case 4:
+		fmt.Println("is <= 4")
+		fallthrough
+	case 5:
+		fmt.Println("is <= 5")
+		fallthrough
+	case 6:
+		fmt.Println("is <= 6")
+		fallthrough
+	case 7:
+		fmt.Println("is <= 7")
+		fallthrough
+	case 8:
+		fmt.Println("is <= 8")
+		fallthrough
+	case 9:
+		fmt.Println("is <= 9")
+		fallthrough
+	default:
+		fmt.Println("Try again!")
+	}
 }
 
 //other functions
