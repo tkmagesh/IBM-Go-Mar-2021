@@ -3,6 +3,7 @@ package main
 
 //import dependency package
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -179,12 +180,95 @@ func main() {
 	default:
 		fmt.Println("Try again!")
 	}
+
+	switch n {
+	default:
+		fmt.Println("Default")
+	}
+
+	add := func(x, y int) int {
+		return x + y
+	}
+
+	fmt.Println(add(100, 200))
+
+	/* divide := func(x, y int) (int, int) {
+		quotient := x / y
+		remainder := x % y
+		return quotient, remainder
+	} */
+
+	divide := func(x, y int) (quotient, remainder int, err error) {
+		if y == 0 {
+			err = errors.New("Invalid arguments")
+			return
+		}
+		quotient = x / y
+		remainder = x % y
+		return
+	}
+
+	/* quotient, remainder, err := divide(100, 0)
+	if err != nil {
+		fmt.Println("Something went wrong")
+		fmt.Println(err)
+	} else {
+		fmt.Println(quotient, remainder)
+	} */
+
+	_, _, err := divide(100, 7)
+	if err != nil {
+		fmt.Println("Something went wrong")
+		fmt.Println(err)
+	} else {
+		fmt.Println("Operation successful")
+	}
+
+	//anonymous function
+	(func() {
+		fmt.Println("Anonymous function executed")
+	})()
+
+	up, down := getCounter()
+	fmt.Println(up()) //=> 1
+	fmt.Println(up()) //=> 2
+	fmt.Println(up()) //=> 3
+	fmt.Println(up()) //=> 4
+
+	fmt.Println(down()) //=> 3
+	fmt.Println(down()) //=> 2
+	fmt.Println(down()) //=> 1
+	fmt.Println(down()) //=> 0
+	fmt.Println(down()) //=> -1
+}
+
+//closures
+
+func getCounter() (func() int, func() int) {
+	var count int = 0
+
+	up := func() int {
+		count += 1
+		return count
+	}
+	down := func() int {
+		count -= 1
+		return count
+	}
+	return up, down
 }
 
 //other functions
 func greet(name string, greeting string) string {
 	//fmt.Printf("Hi %s, %s\n", name, greeting)
 	return fmt.Sprintf("Hi %s, %s\n", name, greeting)
+}
+
+func fn() {
+	f2 := func() {
+
+	}
+	f2()
 }
 
 //go run hello-world.go
