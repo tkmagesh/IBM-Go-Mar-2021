@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strconv"
 )
 
 func main() {
@@ -63,15 +64,73 @@ func main() {
 
 	fmt.Println(aggregate(10, 20))
 	fmt.Println(aggregate(10, 20, 30, 40, 50))
-
-	nos := []int{3, 5, 7, 9}
-	fmt.Println(aggregate(nos...))
+	fmt.Println(aggregate(10))
+	fmt.Println(aggregate())
+	fmt.Println(aggregate(10, 20, 30, 40))
+	fmt.Println(aggregate(10, 20, "30", 40))
+	fmt.Println(aggregate(10, 20, "30", 40, "abc"))
+	fmt.Println(aggregate(10, 20, []int{30, 40}))
+	fmt.Println(aggregate(10, "20", []interface{}{30, "40"}))
 }
 
+/*
 func aggregate(nos ...int) int {
 	result := 0
 	for _, n := range nos {
 		result += n
+	}
+	return result
+}
+*/
+
+/* func aggregate(nos ...interface{}) int {
+	result := 0
+	for _, no := range nos {
+		value, ok := no.(int)
+		if ok {
+			result += value
+		}
+		value2, ok := no.(string)
+		if ok {
+			if value, err := strconv.Atoi(value2); err == nil {
+				result += value
+			}
+		}
+		if list, ok := no.([]int); ok {
+			intfList := make([]interface{}, len(list))
+			for idx, v := range list {
+				intfList[idx] = v
+			}
+			result += aggregate(intfList...)
+		}
+		if list, ok := no.([]interface{}); ok {
+			result += aggregate(list...)
+		}
+	}
+	return result
+} */
+
+func aggregate(nos ...interface{}) int {
+	result := 0
+	for _, no := range nos {
+		switch no.(type) {
+		case int:
+			result += no.(int)
+		case string:
+			if val, err := strconv.Atoi(no.(string)); err == nil {
+				result += val
+			}
+		case []int:
+			numList := no.([]int)
+			intfList := make([]interface{}, len(numList))
+			for idx, v := range numList {
+				intfList[idx] = v
+			}
+			result += aggregate(intfList...)
+
+		case []interface{}:
+			result += aggregate(no.([]interface{})...)
+		}
 	}
 	return result
 }
