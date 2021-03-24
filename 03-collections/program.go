@@ -106,4 +106,14 @@ func main() {
 	_, exists := stateRank["Maharashtra"]
 	fmt.Println(exists)
 
+	jsonData := map[string]interface{}{
+		"name":       "Magesh",
+		"salary":     10000,
+		"isEmployed": true,
+	}
+
+	for key, value := range jsonData {
+		fmt.Println(key, value)
+	}
+
 }

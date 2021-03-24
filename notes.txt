@@ -108,3 +108,8 @@ DataTypes in go
     string
 
 Conditional Statements
+
+Higher Order Functions
+
+
+Dont communicate by sharing memory, instead share memory by communication
