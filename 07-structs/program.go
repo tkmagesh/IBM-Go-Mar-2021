@@ -34,16 +34,52 @@ func newPerishableProduct(id int, name string, cost float64, units int, category
 }
 
 func main() {
-	var penPtr *Product = newProduct(100, "Pen", 10, 50, "Stationary")
 	/*
-		var pen Product = *penPtr
-		fmt.Println(pen.id, pen.name, pen.cost)
-	*/
-	fmt.Println(penPtr.id, penPtr.name, penPtr.cost)
-	var pencil Product = Product{id: 200, name: "Pencil", cost: 5, units: 200, category: "stationary"}
-	fmt.Println(pencil.id, pencil.name, pencil.cost)
+		var penPtr *Product = newProduct(100, "Pen", 10, 50, "Stationary")
+		fmt.Println(penPtr.id, penPtr.name, penPtr.cost)
+		var pencil Product = Product{id: 200, name: "Pencil", cost: 5, units: 200, category: "stationary"}
+		fmt.Println(pencil.id, pencil.name, pencil.cost)
 
-	mango := newPerishableProduct(9, "Mango", 45, 30, "Fruits", 20)
-	fmt.Println(mango)
-	fmt.Println(mango.id, mango.name, mango.cost, mango.units, mango.category, mango.life)
+		mango := newPerishableProduct(9, "Mango", 45, 30, "Fruits", 20)
+		fmt.Println(mango)
+		fmt.Println(mango.id, mango.name, mango.cost, mango.units, mango.category, mango.life)
+	*/
+	p1 := newProduct(6, "Pen", 10, 50, "Stationary")
+	p2 := newProduct(5, "Ten", 30, 20, "Grocery")
+	p3 := newProduct(4, "Den", 20, 10, "Grocery")
+	p4 := newProduct(1, "Len", 50, 30, "Stationary")
+	p5 := newProduct(7, "Zen", 40, 20, "Stationary")
+
+	products := []Product{*p1, *p2, *p3, *p4, *p5}
+
+	fmt.Println(products)
+
 }
+
+func Index(products []Product, p Product) int {
+	return 0
+}
+
+func Include(products []Product, p Product) bool {
+	return true
+}
+
+func Any(products []Product /* condition */) bool {
+	return true
+}
+
+func All(products []Product /* condition */) bool {
+	return true
+}
+
+func Filter(products []Product /* condition */) []Product {
+	return make([]Product, 0)
+}
+
+/*
+Index
+Include
+Any
+All
+Filter
+*/

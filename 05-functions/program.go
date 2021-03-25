@@ -150,3 +150,11 @@ func getCounter() (func() int, func() int) {
 	}
 	return up, down
 }
+
+getCounter()
+
+func fn(){
+	i := 10
+}
+
+fn()
