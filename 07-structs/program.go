@@ -53,10 +53,17 @@ func main() {
 
 	products := []Product{*p1, *p2, *p3, *p4, *p5}
 	printProducts(products)
-	fmt.Println(Index(products, *p3))   // => should print 3
+	fmt.Println(Index(products, *p3))   // => should print 2
 	fmt.Println(Include(products, *p3)) //=> true
 	fmt.Println(Include(products, *p6)) //=> false
+	fmt.Println("Any Stationary Products ? ", Any(products, func(product Product) bool {
+		return product.category == "Stationary"
+	})) //=> true
+	fmt.Println("Any cost > 50 Products ? ", Any(products, func(product Product) bool {
+		return product.cost > 50
+	})) //=> false
 
+	//fmt.Println(AnyByCategory(products, "utencil")) //=> false
 }
 
 func printProducts(products []Product) {
@@ -70,15 +77,47 @@ func print(p Product) {
 }
 
 func Index(products []Product, p Product) int {
-	return 0
+	for i, v := range products {
+		if v == p {
+			return i
+		}
+	}
+	return -1
 }
 
 func Include(products []Product, p Product) bool {
-	return true
+	return Index(products, p) != -1
 }
 
-func Any(products []Product /* condition */) bool {
-	return true
+/* category == "stationary"
+category != "stationary"
+cost == 30
+cost <= 30
+cost < 30
+cost >= 30
+cost > 0
+cost > 30 && category == "stationary"
+
+func AnyByCategory(products []Product, category string) bool {
+	for _, v := range products {
+		if v.category == category {
+			return true
+		}
+	}
+	return false
+}
+
+func AnyByCost(){
+
+} */
+
+func Any(products []Product, predicate func(Product) bool) bool {
+	for _, p := range products {
+		if predicate(p) {
+			return true
+		}
+	}
+	return false
 }
 
 func All(products []Product /* condition */) bool {
