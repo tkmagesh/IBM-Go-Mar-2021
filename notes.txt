@@ -112,7 +112,7 @@ Conditional Statements
 Higher Order Functions
 Variadic Functions
 
-Dont communicate by sharing memory, instead share memory by communication
+
 
 Write an "add" function which will add the values as given below:
 
@@ -123,3 +123,16 @@ add(10,"20",30) => 60
 add(10,"20",30, "abc") => 60
 add(10,20,[]int{30,40}) => 100
 add(10,"20",[]int{30,40}) => 100
+
+Channel
+    Dont communicate by sharing memory, instead share memory by communication
+Creation
+    ch := make(chan int)
+
+Writing data into the channel
+    ch <- 10
+
+Read data from the channel
+    x := <-ch
+
+
