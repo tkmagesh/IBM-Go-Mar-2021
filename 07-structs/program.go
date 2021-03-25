@@ -49,11 +49,24 @@ func main() {
 	p3 := newProduct(4, "Den", 20, 10, "Grocery")
 	p4 := newProduct(1, "Len", 50, 30, "Stationary")
 	p5 := newProduct(7, "Zen", 40, 20, "Stationary")
+	p6 := newProduct(9, "Ken", 40, 20, "Stationary")
 
 	products := []Product{*p1, *p2, *p3, *p4, *p5}
+	printProducts(products)
+	fmt.Println(Index(products, *p3))   // => should print 3
+	fmt.Println(Include(products, *p3)) //=> true
+	fmt.Println(Include(products, *p6)) //=> false
 
-	fmt.Println(products)
+}
 
+func printProducts(products []Product) {
+	for _, product := range products {
+		print(product)
+	}
+}
+
+func print(p Product) {
+	fmt.Printf("id=%d, name=%s, cost=%v, units=%v, category=%s\n", p.id, p.name, p.cost, p.units, p.category)
 }
 
 func Index(products []Product, p Product) int {
