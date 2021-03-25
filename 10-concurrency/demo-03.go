@@ -11,8 +11,10 @@ func print(s string, ch chan string) {
 
 func main() {
 	ch := make(chan string)
-	go print("Hello", ch)
 	go print("World", ch)
+	go print("Hello", ch)
+	go print("Magesh", ch)
+	fmt.Println(<-ch)
 	fmt.Println(<-ch)
 	fmt.Println(<-ch)
 	fmt.Println("end of main")
