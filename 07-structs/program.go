@@ -63,7 +63,16 @@ func main() {
 		return product.cost > 50
 	})) //=> false
 
-	//fmt.Println(AnyByCategory(products, "utencil")) //=> false
+	fmt.Println("Are all products Stationary? ", All(products, func(product Product) bool {
+		return product.category == "Stationary"
+	})) //= false
+
+	fmt.Println("Filter Stationary Products ")
+	stationaryProducts := Filter(products, func(product Product) bool {
+		return product.category == "Stationary"
+	})
+	printProducts(stationaryProducts)
+
 }
 
 func printProducts(products []Product) {
@@ -120,12 +129,23 @@ func Any(products []Product, predicate func(Product) bool) bool {
 	return false
 }
 
-func All(products []Product /* condition */) bool {
+func All(products []Product, predicate func(Product) bool) bool {
+	for _, p := range products {
+		if !predicate(p) {
+			return false
+		}
+	}
 	return true
 }
 
-func Filter(products []Product /* condition */) []Product {
-	return make([]Product, 0)
+func Filter(products []Product, predicate func(Product) bool) []Product {
+	result := make([]Product, 0)
+	for _, p := range products {
+		if predicate(p) {
+			result = append(result, p)
+		}
+	}
+	return result
 }
 
 /*
