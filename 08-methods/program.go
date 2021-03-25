@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Product struct {
 	id       int
@@ -34,6 +37,18 @@ func newPerishableProduct(id int, name string, cost float64, units int, category
 }
 
 type Products []Product
+
+func (products Products) Len() int {
+	return len(products)
+}
+
+func (products Products) Less(i, j int) bool {
+	return products[i].id < products[j].id
+}
+
+func (products Products) Swap(i, j int) {
+	products[i], products[j] = products[j], products[i]
+}
 
 func main() {
 	/*
@@ -77,6 +92,11 @@ func main() {
 	})
 	//printProducts(stationaryProducts)
 	stationaryProducts.print()
+
+	fmt.Println("After sorting")
+	sort.Sort(products)
+
+	products.print()
 
 }
 

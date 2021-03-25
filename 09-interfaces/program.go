@@ -9,9 +9,17 @@ import (
 	interface = contract
 */
 
-type geometry interface {
+type ariable interface {
 	area() float64
+}
+
+type perimeterable interface {
 	perimeter() float64
+}
+
+type geometry interface {
+	ariable
+	perimeterable
 }
 
 type rect struct {
@@ -43,15 +51,19 @@ func measure(shape geometry) {
 	fmt.Println(shape.perimeter())
 }
 
+func measureArea(a ariable) {
+	fmt.Println(a.area())
+}
+
+func measurePerimeter(p perimeterable) {
+	fmt.Println(p.perimeter())
+}
+
 type myShape struct {
 }
 
 func (m myShape) area() float64 {
 	return float64(10)
-}
-
-func (m myShape) perimeter() float64 {
-	return float64(100)
 }
 
 func main() {
@@ -60,5 +72,5 @@ func main() {
 	c := cirlce{radius: 10}
 	measure(c)
 	m := myShape{}
-	measure(m)
+	measureArea(m)
 }
