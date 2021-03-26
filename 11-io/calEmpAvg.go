@@ -17,8 +17,7 @@ type Employee struct {
 type Employees []*Employee
 
 func main() {
-	employees, err := parseEmployees("emp.dat")
-	fmt.Println(employees)
+	employees, err := parseCSVEmployees("emp.dat")
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -27,7 +26,7 @@ func main() {
 
 }
 
-func parseEmployees(fileName string) (Employees, error) {
+func parseCSVEmployees(fileName string) (Employees, error) {
 	employees := make([]*Employee, 0)
 	inputHandle, inputError := os.Open(fileName)
 	defer inputHandle.Close()
@@ -47,6 +46,7 @@ func parseEmployees(fileName string) (Employees, error) {
 	}
 	return employees, nil
 }
+
 func (employees Employees) totalSalary() float64 {
 	total := float64(0)
 	for _, employee := range employees {
