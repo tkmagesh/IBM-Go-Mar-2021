@@ -3,6 +3,9 @@ package main
 import (
 	"empapp/emp"
 	"fmt"
+	"strconv"
+
+	"github.com/fatih/color"
 )
 
 func main() {
@@ -11,5 +14,5 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(employees.avgSalary())
+	color.Green(strconv.FormatFloat(employees.AvgSalary(), 'E', -1, 64))
 }
