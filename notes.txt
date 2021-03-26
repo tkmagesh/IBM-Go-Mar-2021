@@ -136,3 +136,6 @@ Read data from the channel
     x := <-ch
 
 
+Assignment
+    Read file contents concurrently in empdept app
+    A a program to generate csv file for any struct collection
