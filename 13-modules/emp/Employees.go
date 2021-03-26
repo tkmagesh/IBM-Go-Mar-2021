@@ -2,11 +2,21 @@ package emp
 
 import (
 	"encoding/csv"
+	"fmt"
 	"os"
 	"strconv"
 )
 
 type Employees []*Employee
+
+func ParseAsync(fileName string, ch chan Employees) {
+	employees, err := ParseCSV("emp.dat")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	ch <- employees
+}
 
 func ParseCSV(fileName string) (Employees, error) {
 	employees := make([]*Employee, 0)

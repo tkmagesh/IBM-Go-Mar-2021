@@ -2,11 +2,21 @@ package dept
 
 import (
 	"encoding/csv"
+	"fmt"
 	"os"
 	"strconv"
 )
 
 type Departments map[int]string
+
+func ParseAsync(fileName string, deptChan chan Departments) {
+	departments, err := ParseCSV(fileName)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	deptChan <- departments
+}
 
 func ParseCSV(fileName string) (Departments, error) {
 	departments := Departments{}
